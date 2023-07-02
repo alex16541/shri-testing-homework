@@ -141,10 +141,8 @@ describe('вёрстка должна адаптироваться под шир
         }
     });
     it('/store/cart', async function() {
-        const scriptMock = await this.browser.mock('http://localhost:3000/hw/store/api/products/1');
-        scriptMock.respond(catalog[0]);
-        await this.browser.url('http://localhost:3000/hw/store/catalog/1');
-        await this.browser.$('.ProductDetails-AddToCart').click();
+        initCart(this.browser, [catalog[0]]); 
+
         await this.browser.url('http://localhost:3000/hw/store/cart');
         for(let size of sizes){
             await this.browser.setWindowSize(size.width, size.height)
@@ -153,3 +151,12 @@ describe('вёрстка должна адаптироваться под шир
         scriptMock.restore();
     });
 });
+
+async function initCart (browser, items) {
+    await browser.url('http://localhost:3000/hw/store');
+    await browser.execute((items) => 
+        window.localStorage.setItem("example-store-cart", JSON.stringify(items ?? [{"id": 10, "name":"Test","count":1,"price":100}])),
+        items
+    );
+    await browser.refresh();
+}

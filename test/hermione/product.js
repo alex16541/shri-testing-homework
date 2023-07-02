@@ -1,8 +1,8 @@
 const { assert } = require('chai');
 
 
-describe('на странице с подробной информацией отображаются: название товара, его описание, цена, цвет, материал и кнопка * * "добавить в корзину"', async function() {
-    it('Корректные данные', async function() {
+describe('Product ', async function() {
+    it('На странице с подробной информацией отображаются: название товара, его описание, цена, цвет, материал и кнопка * * "добавить в корзину"', async function() {
         await this.browser.url('http://localhost:3000/hw/store/catalog/1');
         assert.isTrue(await this.browser.$('.ProductDetails-Name').isExisting()); 
         assert.isTrue(await this.browser.$('.ProductDetails-Description').isExisting()); 
