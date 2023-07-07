@@ -12,6 +12,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -20,6 +21,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -28,6 +30,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -36,6 +39,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -44,6 +48,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -52,6 +57,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -60,6 +66,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -68,6 +75,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -76,6 +84,7 @@ const catalog = [
             "name": "name",
             "description": "description",
             "price": 100,
+            "count": 1,
             "color": "color",
             "material": "Soft"
     },
@@ -141,14 +150,13 @@ describe('вёрстка должна адаптироваться под шир
         }
     });
     it('/store/cart', async function() {
-        initCart(this.browser, [catalog[0]]); 
+        await initCart(this.browser, [catalog[0]]); 
 
         await this.browser.url('http://localhost:3000/hw/store/cart');
         for(let size of sizes){
             await this.browser.setWindowSize(size.width, size.height)
             await this.browser.assertView(`${size.width}x${size.height}`, 'body');
         }
-        scriptMock.restore();
     });
 });
 
